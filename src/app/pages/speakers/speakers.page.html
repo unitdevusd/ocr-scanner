@@ -1,9 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>speakers</ion-title>
+    <ion-title center>Image to Text </ion-title>
   </ion-toolbar>
+  
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
+  <img [src]="image" />
+  <ion-button expand="full" (click)="selectSource()">Select Image</ion-button>
+  <ion-button expand="full" (click)="recognizeImage()" >Recognize Image</ion-button>
+
+  <ion-card  *ngIf="workerReady && captureProgress > 0">
+    <ion-card-header>Image Text </ion-card-header>
+    <ion-card-title> Capture Progress : {{captureProgress}} %</ion-card-title>
+    <ion-card-content style="color: white;">
+    <ion-label>{{ocrResult}}</ion-label>
+      
+    </ion-card-content>
+  </ion-card>
 </ion-content>
